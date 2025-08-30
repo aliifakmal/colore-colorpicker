@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paletify - Color Picker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo">
+            <img src="PALETIFY.png" alt="Paletify Logo">
+        </div>
+
+        <!-- Main Content Section -->
+        <div class="main-section">
+            <!-- Color Palette Section -->
+            <div class="palette-section">
+                <div class="section-title">Color Palette</div>
+                
+                <!-- Saturation/Lightness Picker -->
+                <div class="saturation-lightness-picker" id="saturationLightnessPicker">
+                    <div class="color-picker-crosshair" id="slCrosshair"></div>
+                </div>
+                
+                <!-- Hue Slider -->
+                <div class="hue-slider" id="hueSlider">
+                    <div class="hue-handle" id="hueHandle"></div>
+                </div>
+                
+                <div class="color-info-section">
+                    <div class="color-preview-box" id="colorPreview"></div>
+                    <div class="color-values">
+                        <div class="color-value-row">
+                            <span class="color-label">HEX</span>
+                            <input type="text" class="color-input" id="hexInput" value="#FF0000">
+                            <button class="copy-btn" onclick="copyToClipboard(document.getElementById('hexInput').value)">Copy</button>
+                        </div>
+                        <div class="color-value-row">
+                            <span class="color-label">RGB</span>
+                            <input type="text" class="color-input" id="rgbInput" value="255, 0, 0">
+                            <button class="copy-btn" onclick="copyToClipboard('rgb(' + document.getElementById('rgbInput').value + ')')">Copy</button>
+                        </div>
+                        <div class="color-value-row">
+                            <span class="color-label">HSL</span>
+                            <input type="text" class="color-input" id="hslInput" value="0°, 100%, 50%">
+                            <button class="copy-btn" onclick="copyToClipboard('hsl(' + document.getElementById('hslInput').value + ')')">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Upload Section -->
+            <div class="photo-section">
+                <div class="section-title">Preview</div>
+                <div class="photo-upload-area" id="photoUploadArea" onclick="document.getElementById('fileInput').click()">
+                    <div class="upload-icon">🖼️</div>
+                    <div class="upload-text">Klik untuk upload gambar</div>
+                    <div class="upload-subtext">atau drag & drop di sini</div>
+                    <input type="file" id="fileInput" class="file-input" accept="image/*">
+                </div>
+                <div class="loading" id="loading">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Menganalisis warna...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommendations Section -->
+        <div class="recommendations-section">
+            <div class="section-title">Rekomendasi Warna</div>
+            <div class="color-recommendations" id="colorRecommendations">
+                <div class="empty-state">Pilih warna dari palette atau upload gambar untuk mendapatkan rekomendasi warna</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
